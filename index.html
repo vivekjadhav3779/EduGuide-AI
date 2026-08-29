@@ -1,0 +1,3176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EduGuide AI - College Counsellor</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f4f7fb;
+    color:#172033;
+}
+
+header{
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+    padding:16px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 20px #0003;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+}
+
+nav button{
+    border:0;
+    background:transparent;
+    color:white;
+    margin-left:12px;
+    cursor:pointer;
+    font-size:14px;
+    padding:8px;
+}
+
+nav button:hover{
+    opacity:.75;
+}
+
+.hero{
+    min-height:560px;
+    background:
+    radial-gradient(circle at 20% 20%,#ffffff25,transparent 30%),
+    linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:70px 20px;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.hero h1{
+    font-size:58px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:19px;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+.btn{
+    border:0;
+    padding:14px 24px;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+    margin:5px;
+}
+
+.primary{
+    background:white;
+    color:#2563eb;
+}
+
+.secondary{
+    background:#ffffff22;
+    color:white;
+    border:1px solid #ffffff66;
+}
+
+.container{
+    max-width:1150px;
+    margin:auto;
+    padding:55px 20px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.section-title h2{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:#64748b;
+}
+
+.card-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 6px 25px #0000000d;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 30px #00000015;
+}
+
+.card h3{
+    margin:12px 0;
+}
+
+.icon{
+    font-size:38px;
+}
+
+.form-card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 6px 30px #00000012;
+    margin-bottom:25px;
+}
+
+input,select,textarea{
+    width:100%;
+    padding:13px;
+    margin:8px 0 16px;
+    border:1px solid #d6dbe5;
+    border-radius:9px;
+    font-size:15px;
+    outline:none;
+}
+
+input:focus,select:focus,textarea:focus{
+    border-color:#2563eb;
+}
+
+textarea{
+    min-height:120px;
+    resize:vertical;
+}
+
+label{
+    font-weight:bold;
+}
+
+.action-btn{
+    background:#2563eb;
+    color:white;
+    border:0;
+    padding:13px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.action-btn:hover{
+    background:#1d4ed8;
+}
+
+.result{
+    margin-top:20px;
+    padding:20px;
+    border-radius:14px;
+    background:#eff6ff;
+    line-height:1.7;
+}
+
+.hidden{
+    display:none!important;
+}
+
+.subject-box{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:15px;
+}
+
+.subject-box label{
+    background:#eff6ff;
+    padding:10px 12px;
+    border-radius:8px;
+    font-weight:normal;
+}
+
+.course-item,
+.college-item,
+.compare-item,
+.check-item,
+.roadmap-item{
+    background:white;
+    padding:20px;
+    margin:12px 0;
+    border-radius:14px;
+    box-shadow:0 3px 18px #0000000d;
+}
+
+.badge{
+    display:inline-block;
+    padding:6px 10px;
+    margin:4px;
+    border-radius:20px;
+    background:#e0e7ff;
+    font-size:13px;
+}
+
+.official-btn{
+    display:inline-block;
+    margin-top:12px;
+    padding:10px 15px;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+}
+
+.small-btn{
+    border:0;
+    padding:9px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    margin:4px;
+    font-weight:bold;
+}
+
+.fav-btn{
+    background:#fee2e2;
+}
+
+.compare-btn{
+    background:#ede9fe;
+}
+
+.chat-box{
+    background:#111827;
+    color:white;
+    padding:25px;
+    border-radius:18px;
+}
+
+.chat-box label{
+    color:white;
+}
+
+.chat-answer{
+    margin-top:20px;
+    background:#1f2937;
+    padding:18px;
+    border-radius:12px;
+    min-height:60px;
+    line-height:1.7;
+}
+
+.voice-box{
+    text-align:center;
+    background:linear-gradient(135deg,#eef2ff,#f5f3ff);
+}
+
+.voice-btn{
+    width:95px;
+    height:95px;
+    border-radius:50%;
+    border:0;
+    background:#7c3aed;
+    color:white;
+    font-size:35px;
+    cursor:pointer;
+    margin:20px;
+    box-shadow:0 8px 25px #7c3aed55;
+}
+
+.voice-btn:hover{
+    transform:scale(1.05);
+}
+
+.dashboard{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+    margin:30px 0;
+}
+
+.stat{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 4px 18px #0000000c;
+}
+
+.stat strong{
+    display:block;
+    font-size:30px;
+    color:#2563eb;
+    margin-bottom:5px;
+}
+
+.progress{
+    width:100%;
+    height:12px;
+    background:#e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
+    margin:12px 0;
+}
+
+.progress-bar{
+    height:100%;
+    background:linear-gradient(90deg,#2563eb,#7c3aed);
+    width:0%;
+    transition:1s;
+}
+
+.check-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.check-item input{
+    width:auto;
+    margin:0;
+}
+
+.roadmap{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+}
+
+.roadmap-item{
+    border-top:5px solid #2563eb;
+}
+
+.compare-table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+}
+
+.compare-table th,
+.compare-table td{
+    padding:14px;
+    border:1px solid #e5e7eb;
+    text-align:left;
+}
+
+.compare-table th{
+    background:#eef2ff;
+}
+
+.empty{
+    text-align:center;
+    padding:30px;
+    color:#64748b;
+}
+
+.toast{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    background:#111827;
+    color:white;
+    padding:15px 20px;
+    border-radius:10px;
+    display:none;
+    z-index:5000;
+    box-shadow:0 8px 30px #0004;
+}
+
+footer{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:35px;
+    margin-top:40px;
+}
+
+footer p{
+    color:#cbd5e1;
+    margin-top:8px;
+}
+
+.back-top{
+    position:fixed;
+    right:20px;
+    bottom:80px;
+    width:45px;
+    height:45px;
+    border:0;
+    border-radius:50%;
+    background:#2563eb;
+    color:white;
+    cursor:pointer;
+    display:none;
+    z-index:999;
+}
+
+@media(max-width:750px){
+
+    header{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    nav{
+        justify-content:center;
+    }
+
+    nav button{
+        margin:2px;
+        font-size:12px;
+    }
+
+    .hero h1{
+        font-size:40px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .container{
+        padding:40px 15px;
+    }
+
+    .section-title h2{
+        font-size:27px;
+    }
+
+    .compare-table{
+        font-size:12px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">🎓 EduGuide AI</div>
+
+<nav>
+<button onclick="showSection('home')">Home</button>
+<button onclick="showSection('eligibility')">Eligibility</button>
+<button onclick="showSection('colleges')">Colleges</button>
+<button onclick="showSection('compare')">Compare</button>
+<button onclick="showSection('favourites')">❤️ Favourites</button>
+<button onclick="showSection('checklist')">📝 Checklist</button>
+<button onclick="showSection('roadmap')">🎯 Roadmap</button>
+<button onclick="showSection('counsellor')">AI Counsellor</button>
+</nav>
+
+</header>
+
+
+<!-- HOME -->
+
+<section id="home">
+
+<div class="hero">
+
+<div class="hero-content">
+
+<h1>🎓 EduGuide AI</h1>
+
+<p>
+Your intelligent college admission companion.
+Find suitable courses, explore colleges,
+check preliminary eligibility, compare colleges,
+prepare documents and get AI-powered guidance.
+</p>
+
+<button class="btn primary"
+onclick="startCounselling()">
+🚀 Start Counselling
+</button>
+
+<button class="btn secondary"
+onclick="showFeatures()">
+✨ Explore Features
+</button>
+
+</div>
+
+</div>
+
+
+<div class="container">
+
+<div class="dashboard">
+
+<div class="stat">
+<strong>100+</strong>
+Colleges
+</div>
+
+<div class="stat">
+<strong>5</strong>
+Cities
+</div>
+
+<div class="stat">
+<strong>12+</strong>
+Career Fields
+</div>
+
+<div class="stat">
+<strong>24/7</strong>
+Guidance
+</div>
+
+</div>
+
+
+<div class="section-title">
+
+<h2>Everything You Need for College Admission</h2>
+
+<p>Smart guidance in one place.</p>
+
+</div>
+
+
+<div class="card-grid">
+
+<div class="card">
+<div class="icon">🤖</div>
+<h3>AI Counsellor</h3>
+<p>Ask questions about courses, colleges and admission.</p>
+</div>
+
+<div class="card">
+<div class="icon">📚</div>
+<h3>Course Recommendation</h3>
+<p>Find courses based on your stream, marks and interests.</p>
+</div>
+
+<div class="card">
+<div class="icon">✅</div>
+<h3>Eligibility Checker</h3>
+<p>Check preliminary eligibility for different courses.</p>
+</div>
+
+<div class="card">
+<div class="icon">🏫</div>
+<h3>College Finder</h3>
+<p>Search colleges by city, stream and course.</p>
+</div>
+
+<div class="card">
+<div class="icon">⚖️</div>
+<h3>College Compare</h3>
+<p>Compare selected colleges in one place.</p>
+</div>
+
+<div class="card">
+<div class="icon">❤️</div>
+<h3>Favourite Colleges</h3>
+<p>Save colleges you want to explore later.</p>
+</div>
+
+<div class="card">
+<div class="icon">📝</div>
+<h3>Application Checklist</h3>
+<p>Keep track of important admission documents.</p>
+</div>
+
+<div class="card">
+<div class="icon">🎯</div>
+<h3>Career Roadmap</h3>
+<p>Explore a simple path from education to career.</p>
+</div>
+
+<div class="card">
+<div class="icon">🎙️</div>
+<h3>Voice Assistant</h3>
+<p>Ask admission questions using your voice.</p>
+</div>
+
+<div class="card">
+<div class="icon">🌐</div>
+<h3>Multilingual</h3>
+<p>English, Marathi and Hindi support.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<main id="mainContent">
+
+
+<!-- ELIGIBILITY -->
+
+<section id="eligibility">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>🤖 AI Eligibility & Admission Chance</h2>
+
+<p>Enter your academic profile for preliminary guidance.</p>
+
+</div>
+
+<div class="form-card">
+
+<label>Student Name</label>
+<input id="name" placeholder="Enter your name">
+
+<label>12th Percentage</label>
+<input id="marks" type="number" min="0" max="100"
+placeholder="Example: 60">
+
+<label>Stream</label>
+
+<select id="stream" onchange="updateSubjects()">
+<option value="">Select Stream</option>
+<option value="Science">Science</option>
+<option value="Commerce">Commerce</option>
+<option value="Arts">Arts</option>
+</select>
+
+<div id="subjectSection" class="hidden">
+
+<label>12th Subjects</label>
+
+<div id="subjectOptions" class="subject-box"></div>
+
+</div>
+
+<label>Interested Field</label>
+
+<select id="interest">
+
+<option value="">Select Interest</option>
+<option value="AI/ML">AI / Machine Learning</option>
+<option value="Data Science">Data Science</option>
+<option value="Computer Science">Computer Science</option>
+<option value="Cyber Security">Cyber Security</option>
+<option value="Engineering">Engineering</option>
+<option value="Finance">Finance</option>
+<option value="Business">Business</option>
+<option value="Psychology">Psychology</option>
+<option value="Media">Media</option>
+<option value="Law">Law</option>
+
+</select>
+
+<label>Entrance Exam Status</label>
+
+<select id="entrance">
+<option value="none">Not Applicable</option>
+<option value="preparing">Preparing</option>
+<option value="appeared">Appeared / Qualified</option>
+</select>
+
+<button class="action-btn"
+onclick="checkEligibility()">
+🔍 Check My Profile
+</button>
+
+<div id="eligibilityBox" class="result hidden">
+
+<div id="eligibilityResult"></div>
+
+<hr>
+
+<h3>📊 Admission Chance</h3>
+
+<div class="progress">
+<div id="chanceBar" class="progress-bar"></div>
+</div>
+
+<p id="predictionResult"></p>
+
+<h3>📚 Recommended Courses</h3>
+
+<div id="courseList"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- COLLEGE FINDER -->
+
+<section id="colleges">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>🏫 College Finder</h2>
+
+<p>Search from 100+ colleges across 5 cities.</p>
+
+</div>
+
+<div class="form-card">
+
+<label>Stream</label>
+
+<select id="collegeStream">
+
+<option value="All">All Streams</option>
+<option value="Science">Science</option>
+<option value="Commerce">Commerce</option>
+<option value="Arts">Arts</option>
+
+</select>
+
+<label>Course</label>
+
+<select id="collegeCourse">
+
+<option value="All">All Courses</option>
+<option value="AI/ML">AI / ML</option>
+<option value="Data Science">Data Science</option>
+<option value="Computer Science">Computer Science</option>
+<option value="Cyber Security">Cyber Security</option>
+<option value="BCA">BCA</option>
+<option value="BBA">BBA</option>
+<option value="B.Com">B.Com</option>
+<option value="Engineering">Engineering</option>
+<option value="Law">Law</option>
+<option value="Psychology">Psychology</option>
+<option value="Media">Media</option>
+
+</select>
+
+<label>Location</label>
+
+<select id="collegeLocation">
+
+<option value="All">All Locations</option>
+<option value="Pune">Pune</option>
+<option value="Mumbai">Mumbai</option>
+<option value="Nashik">Nashik</option>
+<option value="Nagpur">Nagpur</option>
+<option value="Aurangabad">Aurangabad</option>
+
+</select>
+
+<button class="action-btn"
+onclick="findColleges()">
+🔎 Find Colleges
+</button>
+
+</div>
+
+<div id="collegeResults">
+
+<div id="collegeList"></div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- COMPARE -->
+
+<section id="compare">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>⚖️ College Compare</h2>
+
+<p>Select up to 3 colleges from the College Finder.</p>
+
+</div>
+
+<div class="form-card">
+
+<div id="compareList"></div>
+
+<button class="action-btn"
+onclick="renderCompare()">
+⚖️ Compare Selected Colleges
+</button>
+
+</div>
+
+<div id="compareResult"></div>
+
+</div>
+
+</section>
+
+
+<!-- FAVOURITES -->
+
+<section id="favourites">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>❤️ Favourite Colleges</h2>
+
+<p>Your saved colleges appear here.</p>
+
+</div>
+
+<div id="favouriteList"></div>
+
+</div>
+
+</section>
+
+
+<!-- CHECKLIST -->
+
+<section id="checklist">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>📝 Admission Application Checklist</h2>
+
+<p>Track your commonly required admission documents.</p>
+
+</div>
+
+<div class="form-card">
+
+<div class="check-item">
+<input type="checkbox" class="document-check">
+<label>10th Marksheet</label>
+</div>
+
+<div class="check-item">
+<input type="checkbox" class="document-check">
+<label>12th Marksheet</label>
+</div>
+
+<div class="check-item">
+<input type="checkbox" class="document-check">
+<label>Leaving / Transfer Certificate</label>
+</div>
+
+<div class="check-item">
+<input type="checkbox" class="document-check">
+<label>Identity Proof</label>
+</div>
+
+<div class="check-item">
+<input type="checkbox" class="document-check">
+<label>Passport-size Photographs</label>
+</div>
+
+<div class="check-item">
+<input type="checkbox" class="document-check">
+<label>Entrance Exam Scorecard</label>
+</div>
+
+<div class="check-item">
+<input type="checkbox" class="document-check">
+<label>Domicile / Category Documents if applicable</label>
+</div>
+
+<div class="check-item">
+<input type="checkbox" class="document-check">
+<label>College Application Form</label>
+</div>
+
+<div class="check-item">
+<input type="checkbox" class="document-check">
+<label>Fee Payment Proof</label>
+</div>
+
+<br>
+
+<p id="checkProgress">0% completed</p>
+
+<div class="progress">
+<div id="checkBar" class="progress-bar"></div>
+</div>
+
+</div>
+
+<p>
+⚠️ Requirements can vary by college and programme.
+Always verify the official admission notice.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- CAREER ROADMAP -->
+
+<section id="roadmap">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>🎯 Career Roadmap</h2>
+
+<p>Select your field and explore a basic learning path.</p>
+
+</div>
+
+<div class="form-card">
+
+<label>Choose Career Field</label>
+
+<select id="roadmapField" onchange="generateRoadmap()">
+
+<option value="">Select Field</option>
+<option value="AI/ML">AI / Machine Learning</option>
+<option value="Data Science">Data Science</option>
+<option value="Computer Science">Computer Science</option>
+<option value="Cyber Security">Cyber Security</option>
+<option value="Business">Business / Management</option>
+<option value="Finance">Finance</option>
+<option value="Psychology">Psychology</option>
+<option value="Media">Media</option>
+<option value="Law">Law</option>
+
+</select>
+
+</div>
+
+<div id="roadmapResult"></div>
+
+</div>
+
+</section>
+
+
+<!-- AI COUNSELLOR -->
+
+<section id="counsellor">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>💬 Real AI Counsellor</h2>
+
+<p>Ask EduGuide AI about college admission.</p>
+
+</div>
+
+<div class="form-card chat-box">
+
+<label>Language</label>
+
+<select id="language">
+
+<option value="en">English</option>
+<option value="mr">Marathi</option>
+<option value="hi">Hindi</option>
+
+</select>
+
+<textarea id="question"
+placeholder="Example: I got 60% in Science with Mathematics. Which courses can I choose?"></textarea>
+
+<button class="action-btn"
+onclick="askCounsellor()">
+🤖 Ask AI
+</button>
+
+<div id="chatAnswer" class="chat-answer">
+AI answer will appear here.
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- VOICE -->
+
+<section>
+
+<div class="container">
+
+<div class="form-card voice-box">
+
+<h2>🎙️ Voice College Counsellor</h2>
+
+<p>Ask your question using your voice.</p>
+
+<button class="voice-btn"
+onclick="startVoiceAssistant()">
+🎙️
+</button>
+
+<p id="voiceQuestion">
+Press the microphone button to speak.
+</p>
+
+<div id="voiceAnswer" class="result">
+Voice answer will appear here.
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- DOCUMENT INFO -->
+
+<section>
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>📄 Admission Documents</h2>
+
+</div>
+
+<div class="card-grid">
+
+<div class="card">
+<h3>📑 Academic</h3>
+<p>
+10th marksheet<br>
+12th marksheet<br>
+Leaving Certificate
+</p>
+</div>
+
+<div class="card">
+<h3>🪪 Identity</h3>
+<p>
+Aadhaar / ID proof<br>
+Passport photos<br>
+Other required identity documents
+</p>
+</div>
+
+<div class="card">
+<h3>🎓 Admission</h3>
+<p>
+Entrance scorecard<br>
+Application form<br>
+College-specific documents
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+<h3>🎓 EduGuide AI</h3>
+
+<p>AI-powered College Admission Counselling</p>
+
+<p>Course Recommendation • Eligibility • College Finder • Career Guidance</p>
+
+<p>© 2026 EduGuide AI</p>
+
+</footer>
+
+
+<div id="toast" class="toast"></div>
+
+<button id="backTop"
+class="back-top"
+onclick="window.scrollTo({top:0,behavior:'smooth'})">
+↑
+</button>
+
+
+<script>
+
+/* =========================================
+   COLLEGE DATABASE
+   100+ COLLEGES
+========================================= */
+
+const colleges = [
+
+/* PUNE */
+
+{
+name:"Indira University",
+location:"Pune",
+streams:["Science","Commerce","Arts"],
+courses:["AI/ML","Data Science","Computer Science","Cyber Security","BCA","BBA","B.Com","Business","Media"],
+official:"https://www.indirauniversity.edu.in/"
+},
+
+{
+name:"MIT World Peace University",
+location:"Pune",
+streams:["Science","Commerce","Arts"],
+courses:["AI/ML","Data Science","Computer Science","Cyber Security","BCA","BBA","B.Com","Engineering","Law","Psychology","Media"],
+official:"https://mitwpu.edu.in/"
+},
+
+{
+name:"Symbiosis Institute of Computer Studies and Research",
+location:"Pune",
+streams:["Science","Commerce","Arts"],
+courses:["BCA","BBA"],
+official:"https://www.sicsr.ac.in/"
+},
+
+{
+name:"Bharati Vidyapeeth",
+location:"Pune",
+streams:["Science","Commerce","Arts"],
+courses:["AI/ML","Data Science","Computer Science","Cyber Security","BCA","BBA","B.Com","Engineering","Law"],
+official:"https://www.bvuniversity.edu.in/"
+},
+
+{
+name:"Vishwakarma University",
+location:"Pune",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","BCA","BBA","B.Com","Engineering"],
+official:"https://vupune.ac.in/"
+},
+
+{
+name:"Ajeenkya DY Patil University",
+location:"Pune",
+streams:["Science","Commerce","Arts"],
+courses:["AI/ML","Data Science","Computer Science","BCA","BBA","Engineering","Law","Media"],
+official:"https://adypu.edu.in/"
+},
+
+{
+name:"Christ University Pune Lavasa",
+location:"Pune",
+streams:["Science","Commerce","Arts"],
+courses:["BCA","BBA","Data Science","Business","Media"],
+official:"https://lavasa.christuniversity.in/"
+},
+
+{
+name:"FLAME University",
+location:"Pune",
+streams:["Science","Commerce","Arts"],
+courses:["BBA","Psychology","Media","Design","Business"],
+official:"https://www.flame.edu.in/"
+},
+
+{
+name:"Fergusson College",
+location:"Pune",
+streams:["Science","Arts"],
+courses:["Computer Science","Data Science","Psychology"],
+official:"https://www.fergusson.edu/"
+},
+
+{
+name:"Savitribai Phule Pune University",
+location:"Pune",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","Data Science","B.Com","Psychology"],
+official:"https://www.unipune.ac.in/"
+},
+
+{
+name:"Modern College Pune",
+location:"Pune",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","BCA","B.Com","BBA","Psychology"],
+official:"https://moderncollegepune.edu.in/"
+},
+
+{
+name:"Nowrosjee Wadia College",
+location:"Pune",
+streams:["Science","Arts"],
+courses:["Computer Science","Science","Psychology"],
+official:"https://nowrosjeewadia.mespune.org/"
+},
+
+{
+name:"BMCC Pune",
+location:"Pune",
+streams:["Commerce","Arts"],
+courses:["B.Com","BBA","Business","Finance"],
+official:"https://www.bmcc.ac.in/"
+},
+
+{
+name:"Symbiosis College of Arts and Commerce",
+location:"Pune",
+streams:["Commerce","Arts"],
+courses:["B.Com","Business","Finance"],
+official:"https://symbiosiscollege.edu.in/"
+},
+
+{
+name:"MIT Arts Commerce and Science College",
+location:"Pune",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","BCA","B.Com","BBA","Data Science"],
+official:"https://mitsac.ac.in/"
+},
+
+{
+name:"Dr D Y Patil Arts Commerce and Science College",
+location:"Pune",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","BCA","B.Com","BBA"],
+official:"https://acs.dypvp.edu.in/"
+},
+
+{
+name:"Indira College of Commerce and Science",
+location:"Pune",
+streams:["Science","Commerce"],
+courses:["Computer Science","BCA","B.Com","BBA","Data Science"],
+official:"https://www.indiracc.edu.in/"
+},
+
+{
+name:"Marathwada Mitramandal College of Commerce",
+location:"Pune",
+streams:["Commerce","Arts"],
+courses:["B.Com","BBA","Finance"],
+official:"https://mmcc.edu.in/"
+},
+
+{
+name:"St Mira's College for Girls",
+location:"Pune",
+streams:["Science","Commerce","Arts"],
+courses:["BCA","B.Com","BBA","Psychology","Media"],
+official:"https://stmirascollegepune.edu.in/"
+},
+
+{
+name:"Sinhgad College of Science",
+location:"Pune",
+streams:["Science"],
+courses:["Computer Science","Data Science"],
+official:"https://sinhgad.edu/"
+},
+
+/* MUMBAI */
+
+{
+name:"University of Mumbai",
+location:"Mumbai",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","Data Science","B.Com","Psychology","Media"],
+official:"https://mu.ac.in/"
+},
+
+{
+name:"St Xavier's College Mumbai",
+location:"Mumbai",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","B.Com","Psychology","Media"],
+official:"https://xaviers.ac/"
+},
+
+{
+name:"Ramnarain Ruia Autonomous College",
+location:"Mumbai",
+streams:["Science","Arts"],
+courses:["Computer Science","Data Science","Psychology"],
+official:"https://www.ruiacollege.edu/"
+},
+
+{
+name:"Mithibai College",
+location:"Mumbai",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","B.Com","BBA","Psychology","Media"],
+official:"https://mithibai.ac.in/"
+},
+
+{
+name:"K J Somaiya College of Science and Commerce",
+location:"Mumbai",
+streams:["Science","Commerce"],
+courses:["Computer Science","Data Science","BCA","B.Com"],
+official:"https://kjssc.somaiya.edu/"
+},
+
+{
+name:"NM College",
+location:"Mumbai",
+streams:["Commerce","Arts"],
+courses:["B.Com","BBA","Finance","Business"],
+official:"https://nmcollege.in/"
+},
+
+{
+name:"SIES College of Arts Science and Commerce",
+location:"Mumbai",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","BCA","B.Com","BBA","Psychology"],
+official:"https://siesascs.edu.in/"
+},
+
+{
+name:"Jai Hind College",
+location:"Mumbai",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","B.Com","BBA","Media","Psychology"],
+official:"https://jaihindcollege.com/"
+},
+
+{
+name:"H R College of Commerce and Economics",
+location:"Mumbai",
+streams:["Commerce","Arts"],
+courses:["B.Com","BBA","Finance","Business"],
+official:"https://www.hrcollege.edu/"
+},
+
+{
+name:"Wilson College",
+location:"Mumbai",
+streams:["Science","Arts"],
+courses:["Computer Science","Science","Psychology","Media"],
+official:"https://www.wilsoncollege.edu/"
+},
+
+{
+name:"KC College Mumbai",
+location:"Mumbai",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","B.Com","BBA","Media","Psychology"],
+official:"https://kccollege.edu.in/"
+},
+
+{
+name:"Thakur College of Science and Commerce",
+location:"Mumbai",
+streams:["Science","Commerce"],
+courses:["Computer Science","BCA","B.Com","BBA"],
+official:"https://www.tcsc.org.in/"
+},
+
+{
+name:"Patkar Varde College",
+location:"Mumbai",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","B.Com","BBA","Psychology"],
+official:"https://patkarvardecollege.edu.in/"
+},
+
+{
+name:"Nagindas Khandwala College",
+location:"Mumbai",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","BCA","B.Com","BBA","Media"],
+official:"https://nkc.ac.in/"
+},
+
+{
+name:"M S College Mumbai",
+location:"Mumbai",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","B.Com","BBA"],
+official:"https://www.msc.edu.in/"
+},
+
+{
+name:"Bhavan's College Mumbai",
+location:"Mumbai",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","B.Com","Psychology"],
+official:"https://bhavans.ac.in/"
+},
+
+{
+name:"R A Podar College",
+location:"Mumbai",
+streams:["Commerce"],
+courses:["B.Com","Finance","Business"],
+official:"https://www.rapodar.ac.in/"
+},
+
+{
+name:"Kishinchand Chellaram College",
+location:"Mumbai",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","B.Com","BBA","Media"],
+official:"https://www.kccollege.edu.in/"
+},
+
+{
+name:"D G Ruparel College",
+location:"Mumbai",
+streams:["Science","Arts"],
+courses:["Computer Science","Data Science","Psychology"],
+official:"https://www.ruparel.edu/"
+},
+
+{
+name:"Sathaye College",
+location:"Mumbai",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","B.Com","Psychology"],
+official:"https://sathayecollege.edu.in/"
+},
+
+/* NASHIK */
+
+{
+name:"KTHM College Nashik",
+location:"Nashik",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","BCA","B.Com","BBA","Psychology"],
+official:"https://kthmcollege.ac.in/"
+},
+
+{
+name:"BYK College of Commerce",
+location:"Nashik",
+streams:["Commerce","Arts"],
+courses:["B.Com","BBA","Finance"],
+official:"https://bykcollege.com/"
+},
+
+{
+name:"HPT Arts and RYK Science College",
+location:"Nashik",
+streams:["Science","Arts"],
+courses:["Computer Science","Science","Psychology"],
+official:"https://hptcollege.com/"
+},
+
+{
+name:"MVP Samaj's College",
+location:"Nashik",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","B.Com","BBA"],
+official:"https://mvpsamaj.ac.in/"
+},
+
+{
+name:"Sandip University",
+location:"Nashik",
+streams:["Science","Commerce","Arts"],
+courses:["AI/ML","Data Science","Computer Science","Cyber Security","BCA","BBA","Engineering"],
+official:"https://www.sandipuniversity.edu.in/"
+},
+
+{
+name:"K K Wagh Institute",
+location:"Nashik",
+streams:["Science"],
+courses:["Engineering","Computer Science","AI/ML","Cyber Security"],
+official:"https://www.kkwagh.edu.in/"
+},
+
+{
+name:"MET Bhujbal Knowledge City",
+location:"Nashik",
+streams:["Science","Commerce","Arts"],
+courses:["Engineering","BCA","BBA","Computer Science"],
+official:"https://www.metbhujbalknowledgecity.ac.in/"
+},
+
+{
+name:"R H Sapat College",
+location:"Nashik",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","B.Com","BBA"],
+official:"https://rhsapatcollege.com/"
+},
+
+{
+name:"NDMVP College Nashik",
+location:"Nashik",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","B.Com","Psychology"],
+official:"https://www.nmvpmvp.edu.in/"
+},
+
+{
+name:"Ashoka Business School",
+location:"Nashik",
+streams:["Commerce","Arts"],
+courses:["BBA","Business","Finance"],
+official:"https://ashokabschool.com/"
+},
+
+/* NAGPUR */
+
+{
+name:"Rashtrasant Tukadoji Maharaj Nagpur University",
+location:"Nagpur",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","Data Science","B.Com","Psychology"],
+official:"https://nagpuruniversity.ac.in/"
+},
+
+{
+name:"Institute of Science Nagpur",
+location:"Nagpur",
+streams:["Science"],
+courses:["Computer Science","Data Science","Science"],
+official:"https://iscnagpur.ac.in/"
+},
+
+{
+name:"Hislop College",
+location:"Nagpur",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","B.Com","BBA","Psychology"],
+official:"https://hislopcollege.ac.in/"
+},
+
+{
+name:"St Francis De Sales College",
+location:"Nagpur",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","B.Com","BBA"],
+official:"https://www.sfscollege.in/"
+},
+
+{
+name:"DNC College Nagpur",
+location:"Nagpur",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","B.Com","BBA","Psychology"],
+official:"https://dnc.ac.in/"
+},
+
+{
+name:"LAD College Nagpur",
+location:"Nagpur",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","B.Com","BBA","Psychology"],
+official:"https://ladcollege.ac.in/"
+},
+
+{
+name:"Smt Binzani Mahila Mahavidyalaya",
+location:"Nagpur",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","B.Com","Psychology"],
+official:"https://binzani.ac.in/"
+},
+
+{
+name:"Dr Ambedkar College Nagpur",
+location:"Nagpur",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","B.Com","BBA"],
+official:"https://dacn.in/"
+},
+
+{
+name:"Shri Binzani City College",
+location:"Nagpur",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","B.Com","BBA"],
+official:"https://binzanicitycollege.org/"
+},
+
+{
+name:"G H Raisoni University",
+location:"Nagpur",
+streams:["Science","Commerce","Arts"],
+courses:["AI/ML","Data Science","Computer Science","Cyber Security","BCA","BBA","Engineering"],
+official:"https://ghru.edu.in/"
+},
+
+/* AURANGABAD */
+
+{
+name:"Dr Babasaheb Ambedkar Marathwada University",
+location:"Aurangabad",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","Data Science","B.Com","Psychology"],
+official:"https://www.bamu.ac.in/"
+},
+
+{
+name:"Deogiri College",
+location:"Aurangabad",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","BCA","B.Com","BBA","Psychology"],
+official:"https://deogiricollege.org/"
+},
+
+{
+name:"MGM University",
+location:"Aurangabad",
+streams:["Science","Commerce","Arts"],
+courses:["AI/ML","Data Science","Computer Science","Cyber Security","BCA","BBA","Engineering","Media"],
+official:"https://www.mgmu.ac.in/"
+},
+
+{
+name:"Maulana Azad College",
+location:"Aurangabad",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","B.Com","BBA","Psychology"],
+official:"https://macollege.co.in/"
+},
+
+{
+name:"S.B.E.S. College of Science",
+location:"Aurangabad",
+streams:["Science"],
+courses:["Computer Science","Data Science","Science"],
+official:"https://sbes.ac.in/"
+},
+
+{
+name:"People's College Nanded",
+location:"Aurangabad",
+streams:["Science","Commerce","Arts"],
+courses:["Computer Science","B.Com","BBA"],
+official:"https://peoplescollege.in/"
+},
+
+{
+name:"Deogiri Institute of Engineering",
+location:"Aurangabad",
+streams:["Science"],
+courses:["Engineering","Computer Science","AI/ML","Cyber Security"],
+official:"https://deogiriengg.org/"
+},
+
+{
+name:"Government College of Arts and Science",
+location:"Aurangabad",
+streams:["Science","Arts"],
+courses:["Computer Science","Science","Psychology"],
+official:"https://gcaas.ac.in/"
+}
+
+];
+
+
+/* =========================================
+   STATE
+========================================= */
+
+let favourites =
+JSON.parse(localStorage.getItem("eduguideFavourites") || "[]");
+
+let compareSelection = [];
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+function showSection(id){
+
+    const section =
+    document.getElementById(id);
+
+    if(section){
+
+        section.scrollIntoView({
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+function startCounselling(){
+
+    showSection("eligibility");
+
+}
+
+function showFeatures(){
+
+    alert(
+        "🎓 EduGuide AI Features\n\n" +
+        "🤖 AI Counsellor\n" +
+        "📚 Course Recommendation\n" +
+        "✅ Eligibility Checker\n" +
+        "📊 Admission Chance\n" +
+        "🏫 100+ College Finder\n" +
+        "⚖️ College Compare\n" +
+        "❤️ Favourite Colleges\n" +
+        "📝 Application Checklist\n" +
+        "🎯 Career Roadmap\n" +
+        "🎙️ Voice Assistant\n" +
+        "🌐 Marathi / Hindi / English"
+    );
+
+}
+
+
+/* =========================================
+   SUBJECTS
+========================================= */
+
+function updateSubjects(){
+
+    const stream =
+    document.getElementById("stream").value;
+
+    const section =
+    document.getElementById("subjectSection");
+
+    const options =
+    document.getElementById("subjectOptions");
+
+    options.innerHTML="";
+
+    if(!stream){
+
+        section.classList.add("hidden");
+        return;
+
+    }
+
+    section.classList.remove("hidden");
+
+    let subjects=[];
+
+    if(stream==="Science"){
+
+        subjects=[
+            "Physics",
+            "Chemistry",
+            "Mathematics",
+            "Biology",
+            "Computer Science",
+            "Information Technology"
+        ];
+
+    }
+
+    if(stream==="Commerce"){
+
+        subjects=[
+            "Accountancy",
+            "Economics",
+            "Business Studies",
+            "Mathematics",
+            "Computer Science",
+            "Information Technology"
+        ];
+
+    }
+
+    if(stream==="Arts"){
+
+        subjects=[
+            "English",
+            "History",
+            "Political Science",
+            "Geography",
+            "Psychology",
+            "Sociology",
+            "Economics",
+            "Mathematics",
+            "Computer Science"
+        ];
+
+    }
+
+    subjects.forEach(subject=>{
+
+        const label =
+        document.createElement("label");
+
+        label.innerHTML=`
+        <input type="checkbox" value="${subject}">
+        ${subject}
+        `;
+
+        options.appendChild(label);
+
+    });
+
+}
+
+
+function getSelectedSubjects(){
+
+    return Array.from(
+        document.querySelectorAll(
+            "#subjectOptions input:checked"
+        )
+    ).map(x=>x.value);
+
+}
+
+
+/* =========================================
+   ELIGIBILITY + ADMISSION CHANCE
+========================================= */
+
+function checkEligibility(){
+
+    const name =
+    document.getElementById("name").value.trim();
+
+    const marks =
+    Number(document.getElementById("marks").value);
+
+    const stream =
+    document.getElementById("stream").value;
+
+    const interest =
+    document.getElementById("interest").value;
+
+    const entrance =
+    document.getElementById("entrance").value;
+
+    const subjects =
+    getSelectedSubjects();
+
+    if(
+        !name ||
+        isNaN(marks) ||
+        marks<0 ||
+        marks>100 ||
+        !stream ||
+        !interest
+    ){
+
+        alert(
+            "Please fill Name, Percentage, Stream and Interest."
+        );
+
+        return;
+
+    }
+
+    if(subjects.length===0){
+
+        alert("Please select at least one subject.");
+        return;
+
+    }
+
+    let courses=[];
+    let message="";
+    let status="Potentially Eligible";
+
+    if(stream==="Science"){
+
+        if(
+            interest==="AI/ML" ||
+            interest==="Data Science"
+        ){
+
+            courses=[
+                "B.Sc Artificial Intelligence & Machine Learning",
+                "B.Sc Artificial Intelligence",
+                "B.Sc Data Science",
+                "B.Sc Computer Science",
+                "BCA"
+            ];
+
+            if(subjects.includes("Mathematics")){
+
+                status="Strong Preliminary Match";
+
+                message=
+                "Your Science background with Mathematics is relevant to AI/ML and Data Science programmes.";
+
+            }else{
+
+                status="Check Programme Requirements";
+
+                message=
+                "Some AI/ML and Data Science programmes may require Mathematics. Verify the exact programme eligibility.";
+
+            }
+
+        }
+
+        else if(
+            interest==="Computer Science" ||
+            interest==="Cyber Security"
+        ){
+
+            courses=[
+                "B.Sc Computer Science",
+                "BCA",
+                "B.Sc Cyber Security",
+                "B.Sc Information Technology"
+            ];
+
+            status="Potentially Eligible";
+
+            message=
+            "Your Science background can be suitable for Computer Science and Cyber Security programmes.";
+
+        }
+
+        else if(interest==="Engineering"){
+
+            courses=[
+                "B.Tech Computer Science",
+                "B.Tech AI & Data Science",
+                "B.Tech Cyber Security",
+                "B.Tech Electronics"
+            ];
+
+            if(
+                subjects.includes("Physics") &&
+                subjects.includes("Chemistry") &&
+                subjects.includes("Mathematics")
+            ){
+
+                status="Potentially Eligible";
+
+                message=
+                "You have the typical PCM combination. Engineering admission may depend on entrance exams and college rules.";
+
+            }else{
+
+                status="Check Requirements";
+
+                message=
+                "Many engineering programmes require Physics, Chemistry and Mathematics.";
+
+            }
+
+        }
+
+        else{
+
+            courses=[
+                "B.Sc",
+                "BCA",
+                "B.Sc Computer Science",
+                "B.Sc Data Science",
+                "BBA"
+            ];
+
+            message=
+            "You can explore several undergraduate programmes based on your interest.";
+
+        }
+
+    }
+
+    else if(stream==="Commerce"){
+
+        if(
+            interest==="Finance" ||
+            interest==="Business"
+        ){
+
+            courses=[
+                "B.Com",
+                "BBA",
+                "BBA Finance",
+                "BBA Business Analytics",
+                "BBA Digital Marketing"
+            ];
+
+            status="Good Preliminary Match";
+
+            message=
+            "Commerce is a suitable background for business, finance and management programmes.";
+
+        }else{
+
+            courses=[
+                "B.Com",
+                "BBA",
+                "BCA",
+                "BBA Business Analytics"
+            ];
+
+            message=
+            "You can explore commerce, management and selected technology programmes.";
+
+        }
+
+    }
+
+    else{
+
+        if(interest==="Psychology"){
+
+            courses=[
+                "BA Psychology",
+                "BA Applied Psychology",
+                "BA Sociology",
+                "Bachelor of Social Work"
+            ];
+
+        }
+
+        else if(interest==="Media"){
+
+            courses=[
+                "BA Mass Communication",
+                "BA Journalism",
+                "BA Media & Communication"
+            ];
+
+        }
+
+        else if(interest==="Law"){
+
+            courses=[
+                "BA LL.B.",
+                "BBA LL.B.",
+                "5-Year Integrated Law"
+            ];
+
+        }
+
+        else{
+
+            courses=[
+                "BA",
+                "BA Psychology",
+                "BA Mass Communication",
+                "BBA",
+                "Design"
+            ];
+
+        }
+
+        status="Potentially Eligible";
+
+        message=
+        "Your Arts background can be suitable for several humanities, management and professional programmes.";
+
+    }
+
+
+    /* Admission chance */
+
+    let chance=40;
+
+    if(marks>=85) chance+=35;
+    else if(marks>=70) chance+=25;
+    else if(marks>=60) chance+=18;
+    else if(marks>=50) chance+=10;
+
+    if(entrance==="appeared")
+        chance+=10;
+
+    if(
+        stream==="Science" &&
+        subjects.includes("Mathematics")
+    )
+        chance+=5;
+
+    chance=Math.min(chance,95);
+
+
+    let prediction="";
+
+    if(chance>=80)
+        prediction="🟢 High preliminary chance — you have a strong profile for the selected area.";
+
+    else if(chance>=60)
+        prediction="🟡 Moderate to good preliminary chance — explore multiple colleges.";
+
+    else
+        prediction="🟠 Explore more options — some colleges/programmes may have higher requirements.";
+
+
+    const box =
+    document.getElementById("eligibilityBox");
+
+    box.classList.remove("hidden");
+
+
+    document.getElementById("eligibilityResult").innerHTML=`
+
+    <h3>🎓 ${status}</h3>
+
+    <p><b>Student:</b> ${escapeHTML(name)}</p>
+
+    <p><b>Stream:</b> ${stream}</p>
+
+    <p><b>Percentage:</b> ${marks}%</p>
+
+    <p><b>Subjects:</b> ${subjects.join(", ")}</p>
+
+    <p>${message}</p>
+
+    <small>
+    ⚠️ This is preliminary guidance, not an official admission decision.
+    </small>
+
+    `;
+
+
+    document.getElementById("chanceBar").style.width =
+    chance+"%";
+
+
+    document.getElementById("predictionResult").innerText =
+    prediction+" Estimated profile score: "+chance+"%";
+
+
+    const courseList =
+    document.getElementById("courseList");
+
+    courseList.innerHTML="";
+
+    courses.forEach(course=>{
+
+        const div =
+        document.createElement("div");
+
+        div.className="course-item";
+
+        div.innerHTML=
+        "📚 "+course;
+
+        courseList.appendChild(div);
+
+    });
+
+}
+
+
+/* =========================================
+   COLLEGE FINDER
+========================================= */
+
+function findColleges(){
+
+    const stream =
+    document.getElementById("collegeStream").value;
+
+    const course =
+    document.getElementById("collegeCourse").value;
+
+    const location =
+    document.getElementById("collegeLocation").value;
+
+
+    const results =
+    colleges.filter(college=>{
+
+        return(
+            (stream==="All" ||
+            college.streams.includes(stream))
+
+            &&
+
+            (course==="All" ||
+            college.courses.includes(course))
+
+            &&
+
+            (location==="All" ||
+            college.location===location)
+        );
+
+    });
+
+
+    const list =
+    document.getElementById("collegeList");
+
+    list.innerHTML="";
+
+
+    if(results.length===0){
+
+        list.innerHTML=`
+        <div class="college-item empty">
+        😔 No matching college found.
+        </div>
+        `;
+
+        return;
+
+    }
+
+
+    results.forEach(college=>{
+
+        const div =
+        document.createElement("div");
+
+        div.className="college-item";
+
+        const isFav =
+        favourites.includes(college.name);
+
+        const isCompare =
+        compareSelection.includes(college.name);
+
+
+        const badges =
+        college.courses
+        .map(c=>`<span class="badge">${c}</span>`)
+        .join("");
+
+
+        div.innerHTML=`
+
+        <h3>🏫 ${escapeHTML(college.name)}</h3>
+
+        <p>📍 ${college.location}</p>
+
+        <p>🎓 Courses</p>
+
+        <div>${badges}</div>
+
+        <button class="small-btn fav-btn"
+        onclick="toggleFavourite('${escapeAttr(college.name)}')">
+        ${isFav ? "❤️ Saved" : "♡ Favourite"}
+        </button>
+
+        <button class="small-btn compare-btn"
+        onclick="toggleCompare('${escapeAttr(college.name)}')">
+        ${isCompare ? "✓ Added to Compare" : "⚖️ Compare"}
+        </button>
+
+        <br>
+
+        <a class="official-btn"
+        href="${college.official}"
+        target="_blank">
+        🌐 Official Website
+        </a>
+
+        `;
+
+        list.appendChild(div);
+
+    });
+
+}
+
+
+/* =========================================
+   FAVOURITES
+========================================= */
+
+function toggleFavourite(name){
+
+    if(favourites.includes(name)){
+
+        favourites =
+        favourites.filter(x=>x!==name);
+
+        showToast("Removed from favourites");
+
+    }else{
+
+        favourites.push(name);
+
+        showToast("❤️ Added to favourites");
+
+    }
+
+    localStorage.setItem(
+        "eduguideFavourites",
+        JSON.stringify(favourites)
+    );
+
+    findColleges();
+    renderFavourites();
+
+}
+
+
+function renderFavourites(){
+
+    const box =
+    document.getElementById("favouriteList");
+
+    box.innerHTML="";
+
+    if(favourites.length===0){
+
+        box.innerHTML=`
+        <div class="form-card empty">
+        ❤️ No favourite colleges yet.<br>
+        Add colleges from College Finder.
+        </div>
+        `;
+
+        return;
+
+    }
+
+
+    favourites.forEach(name=>{
+
+        const college =
+        colleges.find(c=>c.name===name);
+
+        if(!college) return;
+
+
+        const div =
+        document.createElement("div");
+
+        div.className="college-item";
+
+        div.innerHTML=`
+
+        <h3>🏫 ${escapeHTML(college.name)}</h3>
+
+        <p>📍 ${college.location}</p>
+
+        <button class="small-btn fav-btn"
+        onclick="toggleFavourite('${escapeAttr(college.name)}')">
+        ❌ Remove
+        </button>
+
+        <a class="official-btn"
+        href="${college.official}"
+        target="_blank">
+        🌐 Official Website
+        </a>
+
+        `;
+
+        box.appendChild(div);
+
+    });
+
+}
+
+
+/* =========================================
+   COMPARE
+========================================= */
+
+function toggleCompare(name){
+
+    if(compareSelection.includes(name)){
+
+        compareSelection =
+        compareSelection.filter(x=>x!==name);
+
+        showToast("Removed from compare");
+
+    }else{
+
+        if(compareSelection.length>=3){
+
+            alert("You can compare maximum 3 colleges.");
+            return;
+
+        }
+
+        compareSelection.push(name);
+
+        showToast("⚖️ Added to compare");
+
+    }
+
+    findColleges();
+    renderCompareList();
+
+}
+
+
+function renderCompareList(){
+
+    const box =
+    document.getElementById("compareList");
+
+    box.innerHTML="";
+
+
+    if(compareSelection.length===0){
+
+        box.innerHTML=
+        `<div class="empty">
+        No colleges selected for comparison.
+        </div>`;
+
+        return;
+
+    }
+
+
+    compareSelection.forEach(name=>{
+
+        const div =
+        document.createElement("div");
+
+        div.className="compare-item";
+
+        div.innerHTML=`
+        🏫 ${escapeHTML(name)}
+
+        <button class="small-btn"
+        onclick="toggleCompare('${escapeAttr(name)}')">
+        Remove
+        </button>
+        `;
+
+        box.appendChild(div);
+
+    });
+
+}
+
+
+function renderCompare(){
+
+    const result =
+    document.getElementById("compareResult");
+
+    if(compareSelection.length<2){
+
+        result.innerHTML=`
+        <div class="form-card empty">
+        Select at least 2 colleges to compare.
+        </div>
+        `;
+
+        return;
+
+    }
+
+
+    const selected =
+    compareSelection
+    .map(name=>colleges.find(c=>c.name===name))
+    .filter(Boolean);
+
+
+    let html=`
+    <div class="form-card">
+
+    <h3>⚖️ College Comparison</h3>
+
+    <div style="overflow-x:auto">
+
+    <table class="compare-table">
+
+    <tr>
+    <th>Feature</th>
+    `;
+
+    selected.forEach(c=>{
+        html+=`<th>${escapeHTML(c.name)}</th>`;
+    });
+
+    html+=`</tr>`;
+
+
+    html+=`<tr><td>📍 Location</td>`;
+
+    selected.forEach(c=>{
+        html+=`<td>${c.location}</td>`;
+    });
+
+    html+=`</tr>`;
+
+
+    html+=`<tr><td>🎓 Course Count</td>`;
+
+    selected.forEach(c=>{
+        html+=`<td>${c.courses.length} listed areas</td>`;
+    });
+
+    html+=`</tr>`;
+
+
+    html+=`<tr><td>📚 Courses</td>`;
+
+    selected.forEach(c=>{
+        html+=`<td>${c.courses.join(", ")}</td>`;
+    });
+
+    html+=`</tr>`;
+
+
+    html+=`<tr><td>🌐 Website</td>`;
+
+    selected.forEach(c=>{
+        html+=`
+        <td>
+        <a href="${c.official}" target="_blank">
+        Visit Website
+        </a>
+        </td>`;
+    });
+
+    html+=`</tr>`;
+
+    html+=`</table></div></div>`;
+
+
+    result.innerHTML=html;
+
+    result.scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================
+   CAREER ROADMAP
+========================================= */
+
+function generateRoadmap(){
+
+    const field =
+    document.getElementById("roadmapField").value;
+
+    const result =
+    document.getElementById("roadmapResult");
+
+    if(!field){
+
+        result.innerHTML="";
+        return;
+
+    }
+
+
+    const roadmaps={
+
+    "AI/ML":[
+        "12th / Foundation",
+        "B.Sc AI/ML / B.Tech / BCA",
+        "Python + Mathematics",
+        "Machine Learning + Projects",
+        "Internship",
+        "AI / ML Engineer"
+    ],
+
+    "Data Science":[
+        "12th / Foundation",
+        "Degree in Data Science / CS / AI",
+        "Python + SQL + Statistics",
+        "Power BI / Excel",
+        "Data Projects",
+        "Data Analyst / Data Scientist"
+    ],
+
+    "Computer Science":[
+        "12th",
+        "B.Sc CS / BCA / B.Tech",
+        "Programming + DSA",
+        "Database + Web",
+        "Projects + Internship",
+        "Software / IT Career"
+    ],
+
+    "Cyber Security":[
+        "12th",
+        "B.Sc Cyber Security / CS",
+        "Networking",
+        "Linux + Security Fundamentals",
+        "Security Projects",
+        "Cyber Security Career"
+    ],
+
+    "Business":[
+        "12th",
+        "BBA / B.Com / Management Degree",
+        "Business Fundamentals",
+        "Communication + Analytics",
+        "Internship",
+        "Business / Management Career"
+    ],
+
+    "Finance":[
+        "12th Commerce preferred",
+        "B.Com / BBA Finance",
+        "Accounting + Finance",
+        "Excel + Financial Analysis",
+        "Internship",
+        "Finance Career"
+    ],
+
+    "Psychology":[
+        "12th",
+        "BA Psychology",
+        "Psychology Fundamentals",
+        "Research + Communication",
+        "Higher Studies",
+        "Psychology-related Career"
+    ],
+
+    "Media":[
+        "12th",
+        "BA Media / Journalism",
+        "Writing + Communication",
+        "Video / Design Skills",
+        "Portfolio",
+        "Media Career"
+    ],
+
+    "Law":[
+        "12th",
+        "5-Year Integrated Law",
+        "Legal Fundamentals",
+        "Internships",
+        "Moot Courts / Research",
+        "Legal Career"
+    ]
+
+    };
+
+
+    const steps =
+    roadmaps[field] || [];
+
+
+    result.innerHTML=`
+
+    <div class="form-card">
+
+    <h3>🎯 ${field} Career Roadmap</h3>
+
+    <div class="roadmap">
+
+    ${steps.map((step,i)=>`
+
+    <div class="roadmap-item">
+
+    <h3>Step ${i+1}</h3>
+
+    <p>${step}</p>
+
+    </div>
+
+    `).join("")}
+
+    </div>
+
+    <p style="margin-top:20px">
+    💡 Roadmaps are general guidance. Your exact path can vary
+    depending on your goals, degree and specialization.
+    </p>
+
+    </div>
+
+    `;
+
+}
+
+
+/* =========================================
+   CHECKLIST
+========================================= */
+
+function updateChecklist(){
+
+    const checks =
+    document.querySelectorAll(".document-check");
+
+    let done=0;
+
+    checks.forEach(c=>{
+
+        if(c.checked) done++;
+
+    });
+
+
+    const percent =
+    Math.round(
+        (done/checks.length)*100
+    );
+
+
+    document.getElementById(
+        "checkProgress"
+    ).innerText=
+    percent+"% completed";
+
+
+    document.getElementById(
+        "checkBar"
+    ).style.width=
+    percent+"%";
+
+
+    localStorage.setItem(
+        "eduguideChecklist",
+        JSON.stringify(
+            Array.from(checks).map(c=>c.checked)
+        )
+    );
+
+}
+
+
+function loadChecklist(){
+
+    const saved =
+    JSON.parse(
+        localStorage.getItem(
+            "eduguideChecklist"
+        ) || "[]"
+    );
+
+    const checks =
+    document.querySelectorAll(".document-check");
+
+    checks.forEach((c,i)=>{
+
+        if(saved[i])
+            c.checked=true;
+
+        c.addEventListener(
+            "change",
+            updateChecklist
+        );
+
+    });
+
+    updateChecklist();
+
+}
+
+
+/* =========================================
+   AI COUNSELLOR
+========================================= */
+
+async function askCounsellor(){
+
+    const question =
+    document.getElementById("question")
+    .value.trim();
+
+    const answer =
+    document.getElementById("chatAnswer");
+
+
+    if(!question){
+
+        alert("Please enter your question.");
+        return;
+
+    }
+
+
+    answer.innerText=
+    "🤖 AI Counsellor is thinking...";
+
+
+    try{
+
+        const response =
+        await fetch(
+            "http://localhost:3000/api/counsel",
+            {
+                method:"POST",
+
+                headers:{
+                    "Content-Type":
+                    "application/json"
+                },
+
+                body:JSON.stringify({
+
+                    message:question,
+
+                    language:
+                    getSelectedLanguageName()
+
+                })
+
+            }
+        );
+
+
+        const data =
+        await response.json();
+
+
+        if(!response.ok){
+
+            throw new Error(
+                data.error ||
+                "AI request failed"
+            );
+
+        }
+
+
+        answer.innerText =
+        data.reply;
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        answer.innerText=
+        "❌ AI service unavailable. Please check that server.js is running and your OpenAI API quota/key is active.";
+
+    }
+
+}
+
+
+/* =========================================
+   LANGUAGE
+========================================= */
+
+function getSelectedLanguageName(){
+
+    const language =
+    document.getElementById("language").value;
+
+    if(language==="mr")
+        return "Marathi";
+
+    if(language==="hi")
+        return "Hindi";
+
+    return "English";
+
+}
+
+
+function getVoiceLanguage(){
+
+    const language =
+    document.getElementById("language").value;
+
+    if(language==="mr")
+        return "mr-IN";
+
+    if(language==="hi")
+        return "hi-IN";
+
+    return "en-IN";
+
+}
+
+
+/* =========================================
+   VOICE
+========================================= */
+
+function startVoiceAssistant(){
+
+    const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+
+    if(!SpeechRecognition){
+
+        alert(
+            "Voice recognition is not supported. Please use Google Chrome."
+        );
+
+        return;
+
+    }
+
+
+    const recognition =
+    new SpeechRecognition();
+
+    recognition.lang =
+    getVoiceLanguage();
+
+    recognition.continuous=false;
+    recognition.interimResults=false;
+
+
+    document.getElementById(
+        "voiceAnswer"
+    ).innerText=
+    "🎙️ Listening...";
+
+
+    recognition.start();
+
+
+    recognition.onresult=function(event){
+
+        const text =
+        event.results[0][0].transcript;
+
+
+        document.getElementById(
+            "voiceQuestion"
+        ).innerText=
+        "You said: "+text;
+
+
+        answerVoiceQuestion(text);
+
+    };
+
+
+    recognition.onerror=function(){
+
+        document.getElementById(
+            "voiceAnswer"
+        ).innerText=
+        "❌ Voice recognition failed. Please try again.";
+
+    };
+
+}
+
+
+async function answerVoiceQuestion(question){
+
+    const answer =
+    document.getElementById("voiceAnswer");
+
+
+    answer.innerText=
+    "🤖 AI is preparing your answer...";
+
+
+    try{
+
+        const response =
+        await fetch(
+            "http://localhost:3000/api/counsel",
+            {
+                method:"POST",
+
+                headers:{
+                    "Content-Type":
+                    "application/json"
+                },
+
+                body:JSON.stringify({
+
+                    message:question,
+
+                    language:
+                    getSelectedLanguageName()
+
+                })
+
+            }
+        );
+
+
+        const data =
+        await response.json();
+
+
+        if(!response.ok){
+
+            throw new Error(
+                data.error ||
+                "AI request failed"
+            );
+
+        }
+
+
+        answer.innerText=
+        data.reply;
+
+
+        if("speechSynthesis" in window){
+
+            window.speechSynthesis.cancel();
+
+            const speech =
+            new SpeechSynthesisUtterance(
+                data.reply
+            );
+
+            speech.lang=
+            getVoiceLanguage();
+
+            speech.rate=.95;
+
+            window.speechSynthesis.speak(
+                speech
+            );
+
+        }
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        answer.innerText=
+        "❌ AI service unavailable. Check server.js and API quota.";
+
+    }
+
+}
+
+
+/* =========================================
+   ENTER KEY
+========================================= */
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
+    const question =
+    document.getElementById("question");
+
+
+    question.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key==="Enter" &&
+            !event.shiftKey
+        ){
+
+            event.preventDefault();
+
+            askCounsellor();
+
+        }
+
+    });
+
+
+    loadChecklist();
+    renderFavourites();
+    renderCompareList();
+
+    /* Show Indira first */
+    findColleges();
+
+});
+
+
+/* =========================================
+   TOAST
+========================================= */
+
+function showToast(message){
+
+    const toast =
+    document.getElementById("toast");
+
+    toast.innerText=message;
+
+    toast.style.display="block";
+
+    setTimeout(
+        ()=>toast.style.display="none",
+        2200
+    );
+
+}
+
+
+/* =========================================
+   BACK TO TOP
+========================================= */
+
+window.addEventListener(
+"scroll",
+function(){
+
+    const button =
+    document.getElementById("backTop");
+
+    if(window.scrollY>500)
+        button.style.display="block";
+    else
+        button.style.display="none";
+
+});
+
+
+/* =========================================
+   SECURITY HELPERS
+========================================= */
+
+function escapeHTML(value){
+
+    return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+function escapeAttr(value){
+
+    return String(value)
+    .replace(/\\/g,"\\\\")
+    .replace(/'/g,"\\'");
+
+}
+
+</script>
+
+</body>
+</html>
