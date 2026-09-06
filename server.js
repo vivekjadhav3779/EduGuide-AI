@@ -1,7 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const OpenAI = require("openai");
+const path = require("path");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 dotenv.config();
 
@@ -10,22 +11,20 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const client = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY
-});
+// Serve website files
+app.use(express.static(__dirname));
+
+const genAI = new GoogleGenerativeAI(
+    process.env.GEMINI_API_KEY
+);
 
 
 // ========================================
-// TEST ROUTE
+// HOME PAGE
 // ========================================
 
 app.get("/", (req, res) => {
-
-    res.json({
-        success: true,
-        message: "AI College Counsellor Backend is running!"
-    });
-
+    res.sendFile(path.join(__dirname, "index.html"));
 });
 
 
@@ -40,20 +39,17 @@ app.post("/api/counsel", async (req, res) => {
         const { message, language } = req.body;
 
         if (!message) {
-
             return res.status(400).json({
                 success: false,
                 error: "Message is required"
             });
-
         }
 
+        const model = genAI.getGenerativeModel({
+            model: "gemini-2.5-flash"
+        });
 
-        const response = await client.responses.create({
-
-            model: "gpt-5.6-luna",
-
-            instructions: `
+        const prompt = `
 You are EduGuide AI, an AI College Admission Counsellor.
 
 Help students with:
@@ -81,34 +77,29 @@ For changing information, tell the student to verify the official college websit
 
 Student language:
 ${language || "English"}
-`,
 
-            input: message
+Student Question:
+${message}
+`;
 
-        });
+        const result = await model.generateContent(prompt);
 
+        const response = await result.response;
+
+        const reply = response.text();
 
         res.json({
-
             success: true,
-
-            reply: response.output_text
-
+            reply: reply
         });
 
-    }
-
-
-    catch (error) {
+    } catch (error) {
 
         console.error("AI ERROR:", error);
 
         res.status(500).json({
-
             success: false,
-
             error: error.message
-
         });
 
     }
@@ -120,15 +111,15 @@ ${language || "English"}
 // START SERVER
 // ========================================
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, "127.0.0.1", () => {
+app.listen(PORT, "0.0.0.0", () => {
 
     console.log("");
     console.log("====================================");
     console.log("EDUGUIDE AI SERVER STARTED");
     console.log("====================================");
-    console.log(`http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
     console.log("====================================");
 
 });
